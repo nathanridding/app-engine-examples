@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //initilise speed and level
     let speed = 1;
     let level = 1;
-    let count = 0;
+    let totalRowCount = 0;
 
     //allow movement when tetromino reaches a taken square (or the bottom)
     function sleep(milliseconds) {
@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 moveRight();
             } else if (e.keyCode === 40) {
                 moveDown();
+                score += 1;
             } else if (e.keyCode === 67) {
                 holdQueue();
             }
@@ -165,15 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             current = theTetrominoes[random][currentRotation];
             currentPosition = 4;
-            // increase speed and level for every 10 pieces
-            count += 1;
-            if (count % 10 == 0){
-                level += 1;
-                levelDisplay.innerHTML = level;
-                speed += 0.1;
-                clearInterval(timerId);
-                timerId = setInterval(moveDown, 500/speed);
-            };
             addScore();
             draw();
             displayShape();
@@ -346,11 +338,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //add score and remove complete rows
     function addScore() {
-       for (let i= 0; i < 199; i+=width) {
+        let rowCount = 0;
+        for (let i= 0; i < 199; i+=width) {
             const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
             if (row.every(index => squares[index].classList.contains('taken'))) {
-                score += 10;
-                scoreDisplay.innerHTML = score;
+                rowCount += 1;
+                // increase speed and level for every 10 rows cleared
+                totalRowCount += 1;
+                if (totalRowCount % 10 == 0){
+                    level += 1;
+                    levelDisplay.innerHTML = level;
+                    speed += 0.1;
+                    clearInterval(timerId);
+                    timerId = setInterval(moveDown, 500/speed);
+                };
                 row.forEach(index => {
                     squares[index].classList.remove('taken');
                     squares[index].classList.remove('tetromino');
@@ -360,8 +361,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 squares = squaresRemoved.concat(squares);
                 squares.forEach(cell => grid.appendChild(cell));
             };
-       };
-       undraw();
+        };
+        //calculate score based on number of rows cleared at once
+        switch(rowCount) {
+        case 1:
+            score += 100 * level;
+            break;
+        case 2:
+            score += 300 * level;
+            break;
+        case 3:
+            score += 500 * level;
+            break;
+        case 4:
+            score += 800 * level;
+        }
+        scoreDisplay.innerHTML = score;
+        undraw();
     }
   
     //game over
