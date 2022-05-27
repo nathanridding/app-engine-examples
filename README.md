@@ -7,7 +7,7 @@ Example HTML applications that can be deployed using Google Cloud App Engine
 * **hello-world** - Template HTML files to display hello world page
 * **tetris** - Tetris app created uisng HTML, CSS, and JavaScript
 
-## Steps to deploy
+## Deployment
 
 From the relevant folder for an application, run the following commands
 
