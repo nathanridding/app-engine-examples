@@ -1,0 +1,103 @@
+body {
+    padding: 50px;
+    background-color: #78c5e2;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#score {
+    margin-left: 10px;
+}
+
+#level {
+    margin-left: 10px;
+}
+
+#start-button {
+    background-color: #dd385a;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-weight: bold;
+    border-style: outset;
+    border-width: 0.5vh;
+    border-color: #dd385a;
+}
+
+.container {
+    display: flex;
+    margin: auto;
+    width: 50vw;
+}
+
+.grid {
+    height: 80vh;
+    border-style: solid;
+    border-color: white;
+    display: grid;
+    grid-template-columns: repeat(10, 4vh);
+    grid-template-rows: repeat(20, 4vh);
+    background-color: rgb(50, 50, 50);
+    margin-right: 50px;
+}
+
+.grid div {
+    width: 3vh;
+    height: 3vh;
+}
+
+.tetromino {
+    border-style: outset;
+    border-width: 0.5vh;
+}
+
+.mini-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 70px;
+}
+
+.mini-container div {
+    margin-right: 10px
+}
+
+.mini-grid {
+    height: 16vh;
+    width: 16vh;
+    display: grid;
+    grid-template-columns: repeat(4, 4vh);
+    grid-template-rows: repeat(4, 4vh);
+    border-style: solid;
+    border-color: white;
+    background-color: rgb(50, 50, 50);
+}
+
+.mini-grid div {
+    width: 3vh;
+    height: 3vh;
+}
+
+.hold-grid {
+    height: 16vh;
+    width: 16vh;
+    display: grid;
+    grid-template-columns: repeat(4, 4vh);
+    grid-template-rows: repeat(4, 4vh);
+    border-style: solid;
+    border-color: white;
+    background-color: rgb(50, 50, 50);
+}
+
+.hold-grid div {
+    width: 3vh;
+    height: 3vh;
+}
+
+.keys {
+    margin-top: 100px;
+}
+
+.logo {
+    position: fixed;
+    width: 8vw;
+}
