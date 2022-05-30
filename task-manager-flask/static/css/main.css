@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.content {
+    margin: auto;
+    width: fit-content;
+}
+
+h1 {
+    text-align: center;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid;
+}
+
+th, td {
+    width: 200px;
+    text-align: center;
+    padding: 5px;
+}
+
+.form {
+    margin: auto;
+    width: fit-content;
+    margin-top: 30px;
+}
